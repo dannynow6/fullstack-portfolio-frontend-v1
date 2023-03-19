@@ -14,7 +14,7 @@ const AddProfile = ({ onAdd }) => {
 
 
     const refreshProfiles = () => {
-        API.get("/")
+        API.get("profiles/")
             .then((res) => {
                 setProfiles(res.data); 
                 // setTitle(res[0].title);
@@ -24,19 +24,19 @@ const AddProfile = ({ onAdd }) => {
             .catch(console.error);
     };
 
-        const onSubmit = (e) => {
+        const saveProfile = (e) => {
             e.preventDefault(); 
             let item = { title, description };
-            API.post("/", item).then(() => refreshProfiles()); 
+            API.post("profiles/", item).then(() => refreshProfiles()); 
         };
 
         const onUpdate = (id) => {
-            let item = { title }; 
-            API.patch(`/${id}/`).then((res) => refreshProfiles()); 
+            let item = { title, description }; 
+            API.put(`profiles/${id}/`, item).then((res) => refreshProfiles()); 
         };
 
         const onDelete = (id) => {
-            API.delete(`/${id}/`).then((res) => refreshProfiles());
+            API.delete(`profiles/${id}/`).then((res) => refreshProfiles());
         };
 
         function selectProfile(id) {
@@ -50,10 +50,10 @@ const AddProfile = ({ onAdd }) => {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-4">
-                        <h3 className="float-left">Create New Profile</h3>
-                        <Form onSubmit={onSubmit} className="mt-4">
+                        <h3 className="float-left">Create New/Update Profile</h3>
+                        <Form onSubmit={saveProfile} className="mt-4">
                             <Form.Group className="mb-3" controlId="formBasicTitle">
-                                <Form.Label>{profileId}Title</Form.Label>
+                                <Form.Label>{profileId} Title</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="Enter Title"
@@ -66,6 +66,8 @@ const AddProfile = ({ onAdd }) => {
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
                                     type="text"
+                                    as="textarea"
+                                    rows={6}
                                     placeholder="Enter Description"
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
@@ -74,13 +76,13 @@ const AddProfile = ({ onAdd }) => {
 
                             <div className="float-right">
                                 <Button 
-                                    variant="primary"
+                                    variant="outline-success"
                                     type="submit"
-                                    onClick={onSubmit}
+                                    onClick={saveProfile}
                                     className="mx-2"
                                 >Save</Button>
                                 <Button 
-                                    variant="primary"
+                                    variant="outline-primary"
                                     type="button"
                                     onClick={() => onUpdate(profileId)}
                                     className="mx-2"
@@ -106,14 +108,22 @@ const AddProfile = ({ onAdd }) => {
                                             <td>{profile.title}</td>
                                             <td>{profile.description}</td>
                                             <td>
-                                                <i 
-                                                    className="fa fa-pencil-square text-primary d-inline"
+                                                <Button 
+                                                    variant="outline-secondary"
+                                                    type="button"
                                                     onClick={() => selectProfile(profile.id)}
-                                                ></i>
-                                                <i 
-                                                    className="fa fa-trash-o text-danger d-inline mx-3"
+                                                    className="d-inline mt-2"
+                                                >
+                                                    Select
+                                                </Button>
+                                                <Button 
+                                                    variant="outline-danger"
+                                                    type="button"
                                                     onClick={() => onDelete(profile.id)}
-                                                ></i>
+                                                    className="d-inline mt-5"
+                                                >
+                                                    Delete
+                                                </Button>
                                             </td>
                                         </tr>
                                     );
