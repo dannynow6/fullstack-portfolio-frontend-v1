@@ -12,7 +12,7 @@ const AddExperience = ({ onAdd }) => {
     const [employer_country, setEmployerCountry] = useState("");
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
-    const [current_employer, setCurrentEmployer] = useState(false);
+    const [current_employer, setCurrentEmployer] = useState("");
     const [description, setDescription] = useState("");
     const [experienceId, setExperienceId] = useState(null);
     const [experiences, setExperiences] = useState([]); 
@@ -138,7 +138,7 @@ const AddExperience = ({ onAdd }) => {
                             <Form.Label>Current Employer</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter true or false"
+                                placeholder="Enter 'yes' or 'no'"
                                 value={current_employer}
                                 onChange={(e) => setCurrentEmployer(e.target.value)}
                             />
@@ -148,6 +148,8 @@ const AddExperience = ({ onAdd }) => {
                             <Form.Label>Job Description</Form.Label>
                             <Form.Control
                                 type="text"
+                                as="textarea"
+                                rows={6}
                                 placeholder="Enter Description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}

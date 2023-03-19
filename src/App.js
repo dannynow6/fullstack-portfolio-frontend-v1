@@ -3,6 +3,9 @@ import AddProfile from './AddProfile';
 import AddSkill from './AddSkill';
 import AddEducation from './AddEducation';
 import AddExperience from './AddExperience';
+import AddProject from './AddProject';
+import AddWebsite from './AddWebsite';
+import AddHobby from './AddHobby'; 
 
 function App() {
   return (
@@ -11,6 +14,9 @@ function App() {
       <AddSkill /> 
       <AddEducation />
       <AddExperience /> 
+      <AddProject />
+      <AddWebsite />
+      <AddHobby />
     </div>
   );
 }
