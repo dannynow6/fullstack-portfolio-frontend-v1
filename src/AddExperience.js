@@ -62,35 +62,95 @@ const AddExperience = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h3 className="float-left">Create New/Update Skill</h3>
+                    <h3 className="float-left">Create New/Update Experience</h3>
                     <Form onSubmit={onSubmit} className="mt-4">
-                        <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>{skillId} Name</Form.Label>
+                        <Form.Group className="mb-3" controlId="formBasicPosition">
+                            <Form.Label>{experienceId} Position</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter Skill Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Enter Position"
+                                value={position}
+                                onChange={(e) => setPosition(e.target.value)}
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicLevel">
-                            <Form.Label>Level</Form.Label>
+                        <Form.Group className="mb-3" controlId="formBasicEmpName">
+                            <Form.Label>Employer Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter Skill Level"
-                                value={level}
-                                onChange={(e) => setLevel(e.target.value)}
+                                placeholder="Enter Employer Name"
+                                value={employer_name}
+                                onChange={(e) => setEmployerName(e.target.value)}
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicType">
-                            <Form.Label>Type</Form.Label>
+                        <Form.Group className="mb-3" controlId="formBasicEmpCity">
+                            <Form.Label>Employer City</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter Skill Type"
-                                value={type}
-                                onChange={(e) => setType(e.target.value)}
+                                placeholder="Enter Employer City"
+                                value={employer_city}
+                                onChange={(e) => setEmployerCity(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmpState">
+                            <Form.Label>Employer State</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Employer State"
+                                value={employer_state}
+                                onChange={(e) => setEmployerState(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmpCountry">
+                            <Form.Label>Employer Country</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Employer Country"
+                                value={employer_country}
+                                onChange={(e) => setEmployerCountry(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicStartDate">
+                            <Form.Label>Start Date</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Start Date"
+                                value={start_date}
+                                onChange={(e) => setStartDate(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEndDate">
+                            <Form.Label>End Date</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter End Date"
+                                value={end_date}
+                                onChange={(e) => setEndDate(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmpCurrent">
+                            <Form.Label>Current Employer</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter true or false"
+                                value={current_employer}
+                                onChange={(e) => setCurrentEmployer(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicDescription">
+                            <Form.Label>Job Description</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Description"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                             />
                         </Form.Group>
 
@@ -104,7 +164,7 @@ const AddExperience = ({ onAdd }) => {
                             <Button 
                                 variant="outline-primary"
                                 type="button"
-                                onClick={() => onUpdate(skillId)}
+                                onClick={() => onUpdate(experienceId)}
                                 className="mx-2"
                             >Update</Button>
                         </div>
@@ -115,25 +175,37 @@ const AddExperience = ({ onAdd }) => {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Skill Name</th>
-                                <th scope="col">Skill Level</th>
-                                <th scope="col">Skill Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Employer Name</th>
+                                <th scope="col">Employer City</th>
+                                <th scope="col">Employer State</th>
+                                <th scope="col">Employer Country</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                                <th scope="col">Current Employer</th>
+                                <th scope="col">Description</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {skills.map((skill, index) => {
+                            {experiences.map((experience, index) => {
                                 return (
                                     <tr key="">
-                                        <th scope="row">{skill.id}</th>
-                                        <td>{skill.name}</td>
-                                        <td>{skill.level}</td>
-                                        <td>{skill.type}</td>
+                                        <th scope="row">{experience.id}</th>
+                                        <td>{experience.position}</td>
+                                        <td>{experience.employer_name}</td>
+                                        <td>{experience.employer_city}</td>
+                                        <td>{experience.employer_state}</td>
+                                        <td>{experience.employer_country}</td>
+                                        <td>{experience.start_date}</td>
+                                        <td>{experience.end_date}</td>
+                                        <td>{experience.current_employer}</td>
+                                        <td>{experience.description}</td>
                                         <td>
                                             <Button 
                                                 variant="outline-secondary"
                                                 type="button"
-                                                onClick={() => selectSkill(skill.id)}
+                                                onClick={() => selectExperience(experience.id)}
                                                 className="d-inline mb-2"
                                             >
                                                 Select
@@ -141,7 +213,7 @@ const AddExperience = ({ onAdd }) => {
                                             <Button 
                                                 variant="outline-danger"
                                                 type="button"
-                                                onClick={() => onDelete(skill.id)}
+                                                onClick={() => onDelete(experience.id)}
                                                 className="d-inline mx-2"
                                             >
                                                 Delete
