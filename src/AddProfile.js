@@ -95,6 +95,7 @@ const AddProfile = ({ onAdd }) => {
                                     <th scope="col">#</th>
                                     <th scope="col">Profile Title</th>
                                     <th scope="col">Profile Description</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,12 +108,10 @@ const AddProfile = ({ onAdd }) => {
                                             <td>
                                                 <i 
                                                     className="fa fa-pencil-square text-primary d-inline"
-                                                    aria-hidden="true"
                                                     onClick={() => selectProfile(profile.id)}
                                                 ></i>
                                                 <i 
                                                     className="fa fa-trash-o text-danger d-inline mx-3"
-                                                    aria-hidden="true"
                                                     onClick={() => onDelete(profile.id)}
                                                 ></i>
                                             </td>
