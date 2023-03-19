@@ -50,7 +50,7 @@ const AddWebsite = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h3 className="float-left">Create New/Update Website</h3>
+                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Website</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>{websiteId} Name</Form.Label>
@@ -122,6 +122,7 @@ const AddWebsite = ({ onAdd }) => {
                                         <td>
                                             <Button 
                                                 variant="outline-secondary"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => selectWebsite(website.id)}
                                                 className="d-inline mt-2"
@@ -130,6 +131,7 @@ const AddWebsite = ({ onAdd }) => {
                                             </Button>
                                             <Button 
                                                 variant="outline-danger"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => onDelete(website.id)}
                                                 className="d-inline mt-5"

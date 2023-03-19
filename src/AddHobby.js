@@ -56,7 +56,7 @@ const AddHobby = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h3 className="float-left">Create New/Update Hobby</h3>
+                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Hobby</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>{hobbyId} Name</Form.Label>
@@ -164,6 +164,7 @@ const AddHobby = ({ onAdd }) => {
                                         <td>
                                             <Button 
                                                 variant="outline-secondary"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => selectHobby(hobby.id)}
                                                 className="d-inline mt-2"
@@ -172,6 +173,7 @@ const AddHobby = ({ onAdd }) => {
                                             </Button>
                                             <Button 
                                                 variant="outline-danger"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => onDelete(hobby.id)}
                                                 className="d-inline mt-5"

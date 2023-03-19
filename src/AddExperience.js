@@ -62,7 +62,7 @@ const AddExperience = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h3 className="float-left">Create New/Update Experience</h3>
+                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Experience</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicPosition">
                             <Form.Label>{experienceId} Position</Form.Label>
@@ -206,6 +206,7 @@ const AddExperience = ({ onAdd }) => {
                                         <td>
                                             <Button 
                                                 variant="outline-secondary"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => selectExperience(experience.id)}
                                                 className="d-inline mb-2"
@@ -214,6 +215,7 @@ const AddExperience = ({ onAdd }) => {
                                             </Button>
                                             <Button 
                                                 variant="outline-danger"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => onDelete(experience.id)}
                                                 className="d-inline mx-2"

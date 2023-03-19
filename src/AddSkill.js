@@ -54,7 +54,7 @@ const AddSkill = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h3 className="float-left">Create New/Update Skill</h3>
+                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Skill</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>{skillId} Name</Form.Label>
@@ -124,6 +124,7 @@ const AddSkill = ({ onAdd }) => {
                                         <td>
                                             <Button 
                                                 variant="outline-secondary"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => selectSkill(skill.id)}
                                                 className="d-inline mb-2"
@@ -132,6 +133,7 @@ const AddSkill = ({ onAdd }) => {
                                             </Button>
                                             <Button 
                                                 variant="outline-danger"
+                                                size="sm"
                                                 type="button"
                                                 onClick={() => onDelete(skill.id)}
                                                 className="d-inline mx-2"

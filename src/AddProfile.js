@@ -50,7 +50,7 @@ const AddProfile = ({ onAdd }) => {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-4">
-                        <h3 className="float-left">Create New/Update Profile</h3>
+                        <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Profile</h6>
                         <Form onSubmit={saveProfile} className="mt-4">
                             <Form.Group className="mb-3" controlId="formBasicTitle">
                                 <Form.Label>{profileId} Title</Form.Label>
@@ -110,6 +110,7 @@ const AddProfile = ({ onAdd }) => {
                                             <td>
                                                 <Button 
                                                     variant="outline-secondary"
+                                                    size="sm"
                                                     type="button"
                                                     onClick={() => selectProfile(profile.id)}
                                                     className="d-inline mt-2"
@@ -118,6 +119,7 @@ const AddProfile = ({ onAdd }) => {
                                                 </Button>
                                                 <Button 
                                                     variant="outline-danger"
+                                                    size="sm"
                                                     type="button"
                                                     onClick={() => onDelete(profile.id)}
                                                     className="d-inline mt-5"
