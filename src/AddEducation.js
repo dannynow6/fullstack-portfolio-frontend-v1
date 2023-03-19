@@ -59,6 +59,175 @@ const AddEducation = ({ onAdd }) => {
     }
 
     return (
-        
-    )
-}
+        <div className="container mt-5">
+            <div className="row">
+                <div className="col-md-4">
+                    <h3 className="float-left">Create New/Update Education</h3>
+                    <Form onSubmit={onSubmit} className="mt-4">
+                        <Form.Group className="mb-3" controlId="formBasicSchoolName">
+                            <Form.Label>{educationId} School Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter School Name"
+                                value={school_name}
+                                onChange={(e) => setSchoolName(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicSchoolCity">
+                            <Form.Label>School City</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter School City"
+                                value={school_city}
+                                onChange={(e) => setSchoolCity(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicSchoolState">
+                            <Form.Label>School State</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter School State"
+                                value={school_state}
+                                onChange={(e) => setSchoolState(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicSchoolCountry">
+                            <Form.Label>School Country</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter School Country"
+                                value={school_country}
+                                onChange={(e) => setSchoolCountry(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicDegree">
+                            <Form.Label>Degree Earned</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Degree"
+                                value={degree_earned}
+                                onChange={(e) => setDegreeEarned(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicProgram">
+                            <Form.Label>Program</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Program"
+                                value={program}
+                                onChange={(e) => setProgram(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicDateStarted">
+                            <Form.Label>Start Date</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Start Date"
+                                value={date_started}
+                                onChange={(e) => setDateStarted(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicDateCompleted">
+                            <Form.Label>End Date</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter End Date"
+                                value={date_completed}
+                                onChange={(e) => setDateCompleted(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicSAccolades">
+                            <Form.Label>Accolades</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter Accolades/Achievements"
+                                value={accolades}
+                                onChange={(e) => setAccolades(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <div className="float-right">
+                            <Button 
+                                variant="outline-success"
+                                type="submit"
+                                onClick={onSubmit}
+                                className="mx-2"
+                            >Save</Button>
+                            <Button 
+                                variant="outline-primary"
+                                type="button"
+                                onClick={() => onUpdate(educationId)}
+                                className="mx-2"
+                            >Update</Button>
+                        </div>
+                    </Form>
+                </div>
+                <div className="col-md-8 m">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">School Name</th>
+                                <th scope="col">School City</th>
+                                <th scope="col">School State</th>
+                                <th scope="col">School Country</th>
+                                <th scope="col">Degree</th>
+                                <th scope="col">Program</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                                <th scope="col">Accolades</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {educations.map((education, index) => {
+                                return (
+                                    <tr key="">
+                                        <th scope="row">{education.id}</th>
+                                        <td>{education.school_name}</td>
+                                        <td>{education.school_city}</td>
+                                        <td>{education.school_state}</td>
+                                        <td>{education.school_country}</td>
+                                        <td>{education.degree_earned}</td>
+                                        <td>{education.program}</td>
+                                        <td>{education.date_started}</td>
+                                        <td>{education.date_completed}</td>
+                                        <td>{education.accolades}</td>
+                                        <td>
+                                            <Button 
+                                                variant="outline-secondary"
+                                                type="button"
+                                                onClick={() => selectEducation(education.id)}
+                                                className="d-inline mb-2"
+                                            >
+                                                Select
+                                            </Button>
+                                            <Button 
+                                                variant="outline-danger"
+                                                type="button"
+                                                onClick={() => onDelete(education.id)}
+                                                className="d-inline mx-2"
+                                            >
+                                                Delete
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default AddEducation; 
