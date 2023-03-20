@@ -134,7 +134,7 @@ const AddWebsite = ({ onAdd }) => {
                                                 size="sm"
                                                 type="button"
                                                 onClick={() => onDelete(website.id)}
-                                                className="d-inline mt-5"
+                                                className="d-inline mt-2"
                                             >
                                                 Delete
                                             </Button>
