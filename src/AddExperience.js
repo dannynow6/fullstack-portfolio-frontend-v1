@@ -33,11 +33,29 @@ const AddExperience = ({ onAdd }) => {
         e.preventDefault();
         let item = { position, employer_name, employer_city, employer_state, employer_country, start_date, end_date, current_employer, description };
         API.post("experiences/", item).then(() => refreshExperiences()); 
+        setPosition("");
+        setEmployerName("");
+        setEmployerCity("");
+        setEmployerState("");
+        setEmployerCountry("");
+        setStartDate("");
+        setEndDate("");
+        setCurrentEmployer("");
+        setDescription(""); 
     };
 
     const onUpdate = (id) => {
         let item = { position, employer_name, employer_city, employer_state, employer_country, start_date, end_date, current_employer, description };
         API.put(`experiences/${id}/`, item).then((res) => refreshExperiences());
+        setPosition("");
+        setEmployerName("");
+        setEmployerCity("");
+        setEmployerState("");
+        setEmployerCountry("");
+        setStartDate("");
+        setEndDate("");
+        setCurrentEmployer("");
+        setDescription(""); 
     };
 
     const onDelete = (id) => {
@@ -118,7 +136,7 @@ const AddExperience = ({ onAdd }) => {
                             <Form.Label>Start Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter Start Date"
+                                placeholder="YYYY-MM-DD"
                                 value={start_date}
                                 onChange={(e) => setStartDate(e.target.value)}
                             />
@@ -128,7 +146,7 @@ const AddExperience = ({ onAdd }) => {
                             <Form.Label>End Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter End Date"
+                                placeholder="YYYY-MM-DD"
                                 value={end_date}
                                 onChange={(e) => setEndDate(e.target.value)}
                             />

@@ -28,11 +28,15 @@ const AddProfile = ({ onAdd }) => {
             e.preventDefault(); 
             let item = { title, description };
             API.post("profiles/", item).then(() => refreshProfiles()); 
+            setTitle("");
+            setDescription("");
         };
 
         const onUpdate = (id) => {
             let item = { title, description }; 
-            API.put(`profiles/${id}/`, item).then((res) => refreshProfiles()); 
+            API.put(`profiles/${id}/`, item).then((res) => refreshProfiles());
+            setTitle("");
+            setDescription(""); 
         };
 
         const onDelete = (id) => {

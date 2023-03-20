@@ -27,11 +27,17 @@ const AddWebsite = ({ onAdd }) => {
         e.preventDefault();
         let item = { name, url, description };
         API.post("websites/", item).then(() => refreshWebsites());
+        setName("");
+        setUrl("");
+        setDescription("");
     };
 
     const onUpdate = (id) => {
         let item = { name, url, description };
         API.put(`websites/${id}/`, item).then((res) => refreshWebsites());
+        setName("");
+        setUrl("");
+        setDescription("");
     };
 
     const onDelete = (id) => {

@@ -33,11 +33,29 @@ const AddEducation = ({ onAdd }) => {
         e.preventDefault();
         let item = { school_name, school_city, school_state, school_country, degree_earned, program, date_started, date_completed, accolades };
         API.post("education/", item).then(() => refreshEducation()); 
+        setSchoolName("");
+        setSchoolCity("");
+        setSchoolState("");
+        setSchoolCountry("");
+        setDegreeEarned("");
+        setProgram("");
+        setDateStarted("");
+        setDateCompleted("");
+        setAccolades("");
     };
 
     const onUpdate = (id) => {
         let item = { school_name, school_city, school_state, school_country, degree_earned, program, date_started, date_completed, accolades };
         API.put(`education/${id}/`, item).then((res) => refreshEducation()); 
+        setSchoolName("");
+        setSchoolCity("");
+        setSchoolState("");
+        setSchoolCountry("");
+        setDegreeEarned("");
+        setProgram("");
+        setDateStarted("");
+        setDateCompleted("");
+        setAccolades("");
     };
 
     const onDelete = (id) => {
@@ -128,7 +146,7 @@ const AddEducation = ({ onAdd }) => {
                             <Form.Label>Start Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter Start Date"
+                                placeholder="YYYY-MM-DD"
                                 value={date_started}
                                 onChange={(e) => setDateStarted(e.target.value)}
                             />
@@ -138,7 +156,7 @@ const AddEducation = ({ onAdd }) => {
                             <Form.Label>End Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter End Date"
+                                placeholder="YYYY-MM-DD"
                                 value={date_completed}
                                 onChange={(e) => setDateCompleted(e.target.value)}
                             />

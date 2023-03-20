@@ -31,11 +31,17 @@ const AddSkill = ({ onAdd }) => {
         e.preventDefault();
         let item = { name, level, type };
         API.post("skills/", item).then(() => refreshSkills()); 
+        setName("");
+        setLevel("");
+        setType(""); 
     };
 
     const onUpdate = (id) => {
         let item = { name, level, type };
         API.put(`skills/${id}/`, item).then((res) => refreshSkills());
+        setName("");
+        setLevel("");
+        setType(""); 
     };
 
     const onDelete = (id) => {
@@ -55,7 +61,7 @@ const AddSkill = ({ onAdd }) => {
             <div className="row">
                 <div className="col-md-4">
                     <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Skill</h6>
-                    <Form onSubmit={onSubmit} className="mt-4">
+                    <form id="formSkill" onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>{skillId} Name</Form.Label>
                             <Form.Control
@@ -100,7 +106,7 @@ const AddSkill = ({ onAdd }) => {
                                 className="mx-2"
                             >Update</Button>
                         </div>
-                    </Form>
+                    </form>
                 </div>
                 <div className="col-md-8 m">
                     <table class="table">

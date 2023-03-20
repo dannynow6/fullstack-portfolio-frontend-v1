@@ -30,11 +30,23 @@ const AddHobby = ({ onAdd }) => {
         e.preventDefault();
         let item = { name, start_date, end_date, description, url, additional_info };
         API.post("hobbies/", item).then(() => refreshHobbies()); 
+        setName("");
+        setStartDate("");
+        setEndDate("");
+        setDescription("");
+        setUrl("");
+        setAdditionalInfo(""); 
     };
 
     const onUpdate = (id) => {
         let item = { name, start_date, end_date, description, url, additional_info };
         API.put(`hobbies/${id}/`, item).then((res) => refreshHobbies());
+        setName("");
+        setStartDate("");
+        setEndDate("");
+        setDescription("");
+        setUrl("");
+        setAdditionalInfo(""); 
     };
 
     const onDelete = (id) => {

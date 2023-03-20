@@ -28,11 +28,19 @@ const AddProject = ({ onAdd }) => {
         e.preventDefault();
         let item = { title, tech_used, description, git_repo };
         API.post("projects/", item).then(() => refreshProjects());
+        setTitle("");
+        setTechUsed("");
+        setDescription("");
+        setGitRepo(""); 
     };
 
     const onUpdate = (id) => {
         let item = { title, tech_used, description, git_repo };
         API.put(`projects/${id}/`, item).then((res) => refreshProjects());
+        setTitle("");
+        setTechUsed("");
+        setDescription("");
+        setGitRepo(""); 
     };
 
     const onDelete = (id) => {
