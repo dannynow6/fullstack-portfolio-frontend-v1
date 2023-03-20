@@ -44,3 +44,8 @@ thead {
 tbody {
   font-size: 0.75em;
 }
+
+.item-nav-link {
+  text-decoration: none;
+  color: lightseagreen; 
+}

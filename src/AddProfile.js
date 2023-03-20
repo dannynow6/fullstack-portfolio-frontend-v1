@@ -54,7 +54,7 @@ const AddProfile = ({ onAdd }) => {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-4">
-                        <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Profile</h6>
+                        <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Profile</h6>
                         <Form onSubmit={saveProfile} className="mt-4">
                             <Form.Group className="mb-3" controlId="formBasicTitle">
                                 <Form.Label>{profileId} Title</Form.Label>

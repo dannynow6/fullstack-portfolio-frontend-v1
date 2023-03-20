@@ -60,7 +60,7 @@ const AddProject = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Project</h6>
+                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Project</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicTitle">
                             <Form.Label>{projectId} Title</Form.Label>
@@ -142,7 +142,7 @@ const AddProject = ({ onAdd }) => {
                                         <td>{project.title}</td>
                                         <td>{project.tech_used}</td>
                                         <td>{project.description}</td>
-                                        <td>{project.git_repo}</td>
+                                        <td><a class="item-nav-link" href={project.git_repo} target="_blank" rel="noopener noreferrer">{project.git_repo}</a></td>
                                         <td>
                                             <Button 
                                                 variant="outline-secondary"

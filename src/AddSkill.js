@@ -60,7 +60,7 @@ const AddSkill = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Skill</h6>
+                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Skill</h6>
                     <form id="formSkill" onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>{skillId} Name</Form.Label>

@@ -56,7 +56,7 @@ const AddWebsite = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Website</h6>
+                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Website</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>{websiteId} Name</Form.Label>
@@ -123,7 +123,7 @@ const AddWebsite = ({ onAdd }) => {
                                     <tr key="">
                                         <th scope="row">{website.id}</th>
                                         <td>{website.name}</td>
-                                        <td>{website.url}</td>
+                                        <td><a class="item-nav-link" href={website.url} target="_blank" rel="noopener noreferrer">{website.url}</a></td>
                                         <td>{website.description}</td>
                                         <td>
                                             <Button 

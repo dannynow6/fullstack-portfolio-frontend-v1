@@ -68,7 +68,7 @@ const AddHobby = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Hobby</h6>
+                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Hobby</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>{hobbyId} Name</Form.Label>
@@ -171,7 +171,7 @@ const AddHobby = ({ onAdd }) => {
                                         <td>{hobby.start_date}</td>
                                         <td>{hobby.end_date}</td>
                                         <td>{hobby.description}</td>
-                                        <td>{hobby.url}</td>
+                                        <td><a class="item-nav-link" href={hobby.url} target="_blank" rel="noopener noreferrer">{hobby.url}</a></td>
                                         <td>{hobby.additional_info}</td>
                                         <td>
                                             <Button 

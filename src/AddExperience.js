@@ -80,7 +80,7 @@ const AddExperience = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary">Create/Update Experience</h6>
+                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Experience</h6>
                     <Form onSubmit={onSubmit} className="mt-4">
                         <Form.Group className="mb-3" controlId="formBasicPosition">
                             <Form.Label>{experienceId} Position</Form.Label>
