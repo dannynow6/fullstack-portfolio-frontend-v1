@@ -3,3 +3,62 @@ API works correctly
 
 - Focus now on presentation of Data and layout/design of site. Think about how to section the page, include photo, and style it appropriately 
 -- Currently, all data presented in simple table format. Need to start working with data to present it more effectively. 
+
+- Use NavBar Brand from React-bootstrap for main navigation - Will need to figure out how to navigate the page. Could use react-router to deal with page navigation
+https://reactrouter.com/en/main
+https://reactrouter.com/en/main/start/tutorial
+
+- use react-icons for icons throughout 
+
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+
+function BrandExample() {
+  return (
+    <>
+      <Navbar bg="light">
+        <Container>
+          <Navbar.Brand href="#home">Brand link</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <br />
+      <Navbar bg="light">
+        <Container>
+          <Navbar.Brand>Brand text</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <br />
+      <Navbar bg="dark">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img
+              src="/logo.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+      <br />
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src="/logo.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+            React Bootstrap
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+    </>
+  );
+}
+
+export default BrandExample;
+ 
