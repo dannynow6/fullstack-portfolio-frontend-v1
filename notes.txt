@@ -1,0 +1,5 @@
+All forms in Modals. Forms all work save, update, delete, select 
+API works correctly 
+
+- Focus now on presentation of Data and layout/design of site. Think about how to section the page, include photo, and style it appropriately 
+-- Currently, all data presented in simple table format. Need to start working with data to present it more effectively. 
