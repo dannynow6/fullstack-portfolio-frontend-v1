@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"; 
-import { Button, Form } from 'react-bootstrap'; 
+import { Button, Form, Modal } from 'react-bootstrap'; 
 import API from "./API"; 
 
 // name, url (needs to be full url), description 
@@ -10,6 +10,16 @@ const AddWebsite = ({ onAdd }) => {
     const [description, setDescription] = useState("");
     const [websiteId, setWebsiteId] = useState(null);
     const [websites, setWebsites] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setName("");
+        setUrl("");
+        setDescription("");
+    };
+    
+    const handleShow = () => setShow(true); 
 
     useEffect(() => {
         refreshWebsites();
@@ -55,56 +65,72 @@ const AddWebsite = ({ onAdd }) => {
     return (
         <div className="container mt-5">
             <div className="row">
-                <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Website</h6>
-                    <Form onSubmit={onSubmit} className="mt-4">
-                        <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>{websiteId} Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Website Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </Form.Group>
+                <div className="col-4">
+                    <Button variant="outline-secondary" onClick={handleShow}>
+                        Create/Update Website
+                    </Button>
 
-                        <Form.Group className="mb-3" controlId="formBasicUrl">
-                            <Form.Label>URL</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter URL"
-                                value={url}
-                                onChange={(e) => setUrl(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Website</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form onSubmit={onSubmit} className="mt-4">
+                                <Form.Group className="mb-3" controlId="formBasicName">
+                                    <Form.Label>{websiteId} Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Website Name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control
-                                type="text"
-                                as="textarea"
-                                rows={4}
-                                placeholder="Enter Description"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicUrl">
+                                    <Form.Label>URL</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter URL"
+                                        value={url}
+                                        onChange={(e) => setUrl(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <div className="float-right">
-                            <Button 
-                                variant="outline-success"
-                                type="submit"
-                                onClick={onSubmit}
-                                className="mx-2"
-                            >Save</Button>
-                            <Button 
-                                variant="outline-primary"
-                                type="button"
-                                onClick={() => onUpdate(websiteId)}
-                                className="mx-2"
-                            >Update</Button>
-                        </div>
-                    </Form>
+                                <Form.Group className="mb-3" controlId="formBasicDescription">
+                                    <Form.Label>Description</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        as="textarea"
+                                        rows={4}
+                                        placeholder="Enter Description"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <div className="float-right">
+                                    <Button 
+                                        variant="outline-success"
+                                        type="submit"
+                                        onClick={onSubmit}
+                                        className="mx-2"
+                                    >Save</Button>
+                                    <Button 
+                                        variant="outline-primary"
+                                        type="button"
+                                        onClick={() => onUpdate(websiteId)}
+                                        className="mx-2"
+                                    >Update</Button>
+                                </div>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-danger" onClick={handleClose}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+
                 </div>
                 <div className="col-md-8 m">
                     <table class="table">

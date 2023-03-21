@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"; 
-import { Button, Form, Dropdown } from 'react-bootstrap'; 
+import { Button, Form, Modal } from 'react-bootstrap'; 
 import API from "./API"; 
 
 // id, name, level (advanced, familiar), type (hard/soft)
@@ -10,6 +10,16 @@ const AddSkill = ({ onAdd }) => {
     const [type, setType] = useState("");
     const [skillId, setSkillId] = useState(null);
     const [skills, setSkills] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setName("");
+        setLevel("");
+        setType(""); 
+    };
+
+    const handleShow = () => setShow(true); 
 
     useEffect(() => {
         refreshSkills();
@@ -60,10 +70,15 @@ const AddSkill = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <Dropdown className="float-left">
-                        <Dropdown.Toggle variant="outline-secondary" id="dropdownSkill">Create/Update Skill</Dropdown.Toggle>
+                    <Button variant="outline-secondary" onClick={handleShow}>
+                        Create/Update Skill
+                    </Button>
 
-                        <Dropdown.Menu>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Skill</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
                             <form id="formSkill" onSubmit={onSubmit} className="mt-4">
                                 <Form.Group className="mb-3" controlId="formBasicName">
                                     <Form.Label>{skillId} Name</Form.Label>
@@ -114,10 +129,13 @@ const AddSkill = ({ onAdd }) => {
                                     >Update</Button>
                                 </div>
                             </form>
-                        </Dropdown.Menu>
-                    </Dropdown>
-
-                    
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-danger" onClick={handleClose}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
                 <div className="col-md-8 m">
                     <table class="table">

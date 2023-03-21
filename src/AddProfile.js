@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"; 
-import { Button, Form } from 'react-bootstrap'; 
+import { Button, Form, Modal } from 'react-bootstrap'; 
 import API from "./API"; 
 
 const AddProfile = ({ onAdd }) => {
@@ -7,6 +7,15 @@ const AddProfile = ({ onAdd }) => {
     const [description, setDescription] = useState(""); 
     const [profileId, setProfileId] = useState(null); 
     const [profiles, setProfiles] = useState([]); 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setTitle("");
+        setDescription("");
+    };
+
+    const handleShow = () => setShow(true); 
 
     useEffect(() => {
         refreshProfiles();
@@ -54,45 +63,60 @@ const AddProfile = ({ onAdd }) => {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-4">
-                        <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Profile</h6>
-                        <Form onSubmit={saveProfile} className="mt-4">
-                            <Form.Group className="mb-3" controlId="formBasicTitle">
-                                <Form.Label>{profileId} Title</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Enter Title"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                />
-                            </Form.Group>
+                        <Button variant="outline-secondary" onClick={handleShow}>
+                            Create/Update Profile
+                        </Button>
 
-                            <Form.Group className="mb-3" controlId="formBasicDescription">
-                                <Form.Label>Description</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    as="textarea"
-                                    rows={6}
-                                    placeholder="Enter Description"
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
-                            </Form.Group>
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Profile</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Form onSubmit={saveProfile} className="mt-4">
+                                    <Form.Group className="mb-3" controlId="formBasicTitle">
+                                        <Form.Label>{profileId} Title</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="Enter Title"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                        />
+                                    </Form.Group>
 
-                            <div className="float-right">
-                                <Button 
-                                    variant="outline-success"
-                                    type="submit"
-                                    onClick={saveProfile}
-                                    className="mx-2"
-                                >Save</Button>
-                                <Button 
-                                    variant="outline-primary"
-                                    type="button"
-                                    onClick={() => onUpdate(profileId)}
-                                    className="mx-2"
-                                >Update</Button>
-                            </div>
-                        </Form>
+                                    <Form.Group className="mb-3" controlId="formBasicDescription">
+                                        <Form.Label>Description</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            as="textarea"
+                                            rows={6}
+                                            placeholder="Enter Description"
+                                            value={description}
+                                            onChange={(e) => setDescription(e.target.value)}
+                                        />
+                                    </Form.Group>
+
+                                    <div className="float-right">
+                                        <Button 
+                                            variant="outline-success"
+                                            type="submit"
+                                            onClick={saveProfile}
+                                            className="mx-2"
+                                        >Save</Button>
+                                        <Button 
+                                            variant="outline-primary"
+                                            type="button"
+                                            onClick={() => onUpdate(profileId)}
+                                            className="mx-2"
+                                        >Update</Button>
+                                    </div>
+                                </Form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="outline-danger" onClick={handleClose}>
+                                    Close
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
                     </div>
                     <div className="col-md-8 m">
                         <table class="table">

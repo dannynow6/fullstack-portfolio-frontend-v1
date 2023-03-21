@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"; 
-import { Button, Form } from 'react-bootstrap'; 
+import { Button, Form, Modal } from 'react-bootstrap'; 
 import API from "./API"; 
 
 // position, employer_name, employer_city, employer_state, employer_country, start_date, end_date, current_employer (true/false), description (of job - use textarea) 
@@ -16,6 +16,22 @@ const AddExperience = ({ onAdd }) => {
     const [description, setDescription] = useState("");
     const [experienceId, setExperienceId] = useState(null);
     const [experiences, setExperiences] = useState([]); 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setPosition("");
+        setEmployerName("");
+        setEmployerCity("");
+        setEmployerState("");
+        setEmployerCountry("");
+        setStartDate("");
+        setEndDate("");
+        setCurrentEmployer("");
+        setDescription(""); 
+    };
+    
+    const handleShow = () => setShow(true); 
 
     useEffect(() => {
         refreshExperiences();
@@ -80,117 +96,132 @@ const AddExperience = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Experience</h6>
-                    <Form onSubmit={onSubmit} className="mt-4">
-                        <Form.Group className="mb-3" controlId="formBasicPosition">
-                            <Form.Label>{experienceId} Position</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Position"
-                                value={position}
-                                onChange={(e) => setPosition(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Button variant="outline-secondary" onClick={handleShow}>
+                        Create/Update Experience
+                    </Button>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmpName">
-                            <Form.Label>Employer Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Employer Name"
-                                value={employer_name}
-                                onChange={(e) => setEmployerName(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Experience</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form onSubmit={onSubmit} className="mt-4">
+                                <Form.Group className="mb-3" controlId="formBasicPosition">
+                                    <Form.Label>{experienceId} Position</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Position"
+                                        value={position}
+                                        onChange={(e) => setPosition(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmpCity">
-                            <Form.Label>Employer City</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Employer City"
-                                value={employer_city}
-                                onChange={(e) => setEmployerCity(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmpName">
+                                    <Form.Label>Employer Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Employer Name"
+                                        value={employer_name}
+                                        onChange={(e) => setEmployerName(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmpState">
-                            <Form.Label>Employer State</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Employer State"
-                                value={employer_state}
-                                onChange={(e) => setEmployerState(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmpCity">
+                                    <Form.Label>Employer City</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Employer City"
+                                        value={employer_city}
+                                        onChange={(e) => setEmployerCity(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmpCountry">
-                            <Form.Label>Employer Country</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Employer Country"
-                                value={employer_country}
-                                onChange={(e) => setEmployerCountry(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmpState">
+                                    <Form.Label>Employer State</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Employer State"
+                                        value={employer_state}
+                                        onChange={(e) => setEmployerState(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicStartDate">
-                            <Form.Label>Start Date</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="YYYY-MM-DD"
-                                value={start_date}
-                                onChange={(e) => setStartDate(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmpCountry">
+                                    <Form.Label>Employer Country</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Employer Country"
+                                        value={employer_country}
+                                        onChange={(e) => setEmployerCountry(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEndDate">
-                            <Form.Label>End Date</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="YYYY-MM-DD (leave blank if current)"
-                                value={end_date}
-                                onChange={(e) => setEndDate(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicStartDate">
+                                    <Form.Label>Start Date</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="YYYY-MM-DD"
+                                        value={start_date}
+                                        onChange={(e) => setStartDate(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmpCurrent">
-                            <Form.Select 
-                                id="selectEmpCurrent"
-                                value={current_employer}
-                                onChange={(e) => setCurrentEmployer(e.target.value)}
-                            >
-                                <option>Current Employer?</option>
-                                <option value="yes">yes</option>
-                                <option value="no">no</option>
-                            </Form.Select>
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEndDate">
+                                    <Form.Label>End Date</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="YYYY-MM-DD (leave blank if current)"
+                                        value={end_date}
+                                        onChange={(e) => setEndDate(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDescription">
-                            <Form.Label>Job Description</Form.Label>
-                            <Form.Control
-                                type="text"
-                                as="textarea"
-                                rows={6}
-                                placeholder="Enter Description"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmpCurrent">
+                                    <Form.Select 
+                                        id="selectEmpCurrent"
+                                        value={current_employer}
+                                        onChange={(e) => setCurrentEmployer(e.target.value)}
+                                    >
+                                        <option>Current Employer?</option>
+                                        <option value="yes">yes</option>
+                                        <option value="no">no</option>
+                                    </Form.Select>
+                                </Form.Group>
 
-                        <div className="float-right">
-                            <Button 
-                                variant="outline-success"
-                                type="submit"
-                                onClick={onSubmit}
-                                className="mx-2"
-                            >Save</Button>
-                            <Button 
-                                variant="outline-primary"
-                                type="button"
-                                onClick={() => onUpdate(experienceId)}
-                                className="mx-2"
-                            >Update</Button>
-                        </div>
-                    </Form>
+                                <Form.Group className="mb-3" controlId="formBasicDescription">
+                                    <Form.Label>Job Description</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        as="textarea"
+                                        rows={6}
+                                        placeholder="Enter Description"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <div className="float-right">
+                                    <Button 
+                                        variant="outline-success"
+                                        type="submit"
+                                        onClick={onSubmit}
+                                        className="mx-2"
+                                    >Save</Button>
+                                    <Button 
+                                        variant="outline-primary"
+                                        type="button"
+                                        onClick={() => onUpdate(experienceId)}
+                                        className="mx-2"
+                                    >Update</Button>
+                                </div>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-danger" onClick={handleClose}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
                 <div className="col-md-8 m">
                     <table class="table">

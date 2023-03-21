@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"; 
-import { Button, Form } from 'react-bootstrap'; 
+import { Button, Form, Modal } from 'react-bootstrap'; 
 import API from "./API"; 
 
 // name, start_date, end_date, description (use textarea), url (full url if applicable), additional_info 
@@ -13,6 +13,19 @@ const AddHobby = ({ onAdd }) => {
     const [additional_info, setAdditionalInfo] = useState("");
     const [hobbyId, setHobbyId] = useState(null);
     const [hobbies, setHobbies] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setName("");
+        setStartDate("");
+        setEndDate("");
+        setDescription("");
+        setUrl("");
+        setAdditionalInfo(""); 
+    };
+
+    const handleShow = () => setShow(true); 
 
     useEffect(() => {
         refreshHobbies();
@@ -68,85 +81,100 @@ const AddHobby = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Hobby</h6>
-                    <Form onSubmit={onSubmit} className="mt-4">
-                        <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>{hobbyId} Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Hobby Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Button variant="outline-secondary" onClick={handleShow}>
+                        Create/Update Hobby
+                    </Button>
 
-                        <Form.Group className="mb-3" controlId="formBasicStartDate">
-                            <Form.Label>Start Date</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Start Date"
-                                value={start_date}
-                                onChange={(e) => setStartDate(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Hobby</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form onSubmit={onSubmit} className="mt-4">
+                                <Form.Group className="mb-3" controlId="formBasicName">
+                                    <Form.Label>{hobbyId} Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Hobby Name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEndDate">
-                            <Form.Label>End Date</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter End Date"
-                                value={end_date}
-                                onChange={(e) => setEndDate(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicStartDate">
+                                    <Form.Label>Start Date</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="YYYY-MM-DD"
+                                        value={start_date}
+                                        onChange={(e) => setStartDate(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control
-                                type="text"
-                                as="textarea"
-                                rows={3}
-                                placeholder="Enter Description"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEndDate">
+                                    <Form.Label>End Date</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="YYYY-MM-DD"
+                                        value={end_date}
+                                        onChange={(e) => setEndDate(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicURL">
-                            <Form.Label>URL</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter URL"
-                                value={url}
-                                onChange={(e) => setUrl(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicDescription">
+                                    <Form.Label>Description</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        as="textarea"
+                                        rows={3}
+                                        placeholder="Enter Description"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicInfo">
-                            <Form.Label>Additional Info</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Additional Info"
-                                value={additional_info}
-                                onChange={(e) => setAdditionalInfo(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicURL">
+                                    <Form.Label>URL</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter URL"
+                                        value={url}
+                                        onChange={(e) => setUrl(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <div className="float-right">
-                            <Button 
-                                variant="outline-success"
-                                type="submit"
-                                onClick={onSubmit}
-                                className="mx-2"
-                            >Save</Button>
-                            <Button 
-                                variant="outline-primary"
-                                type="button"
-                                onClick={() => onUpdate(hobbyId)}
-                                className="mx-2"
-                            >Update</Button>
-                        </div>
-                    </Form>
+                                <Form.Group className="mb-3" controlId="formBasicInfo">
+                                    <Form.Label>Additional Info</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Additional Info"
+                                        value={additional_info}
+                                        onChange={(e) => setAdditionalInfo(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <div className="float-right">
+                                    <Button 
+                                        variant="outline-success"
+                                        type="submit"
+                                        onClick={onSubmit}
+                                        className="mx-2"
+                                    >Save</Button>
+                                    <Button 
+                                        variant="outline-primary"
+                                        type="button"
+                                        onClick={() => onUpdate(hobbyId)}
+                                        className="mx-2"
+                                    >Update</Button>
+                                </div>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-danger" onClick={handleClose}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
                 <div className="col-md-8 m">
                     <table class="table">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"; 
-import { Button, Form } from 'react-bootstrap'; 
+import { Button, Form, Modal } from 'react-bootstrap'; 
 import API from "./API"; 
 
 // school_name, school_city, school_state, school_country, degree_earned, program, date_started, date_completed, accolades 
@@ -16,6 +16,22 @@ const AddEducation = ({ onAdd }) => {
     const [accolades, setAccolades] = useState("");
     const [educationId, setEducationId] = useState(null);
     const [educations, setEducations] = useState([]); 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        setSchoolName("");
+        setSchoolCity("");
+        setSchoolState("");
+        setSchoolCountry("");
+        setDegreeEarned("");
+        setProgram("");
+        setDateStarted("");
+        setDateCompleted("");
+        setAccolades("");
+    };
+
+    const handleShow = () => setShow(true); 
 
     useEffect(() => {
         refreshEducation();
@@ -80,113 +96,128 @@ const AddEducation = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Education</h6>
-                    <Form onSubmit={onSubmit} className="mt-4">
-                        <Form.Group className="mb-3" controlId="formBasicSchoolName">
-                            <Form.Label>{educationId} School Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter School Name"
-                                value={school_name}
-                                onChange={(e) => setSchoolName(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Button variant="outline-secondary" onClick={handleShow}>
+                        Create/Update Education
+                    </Button>
 
-                        <Form.Group className="mb-3" controlId="formBasicSchoolCity">
-                            <Form.Label>School City</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter School City"
-                                value={school_city}
-                                onChange={(e) => setSchoolCity(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Education</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form onSubmit={onSubmit} className="mt-4">
+                                <Form.Group className="mb-3" controlId="formBasicSchoolName">
+                                    <Form.Label>{educationId} School Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter School Name"
+                                        value={school_name}
+                                        onChange={(e) => setSchoolName(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicSchoolState">
-                            <Form.Label>School State</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter School State"
-                                value={school_state}
-                                onChange={(e) => setSchoolState(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicSchoolCity">
+                                    <Form.Label>School City</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter School City"
+                                        value={school_city}
+                                        onChange={(e) => setSchoolCity(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicSchoolCountry">
-                            <Form.Label>School Country</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter School Country"
-                                value={school_country}
-                                onChange={(e) => setSchoolCountry(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicSchoolState">
+                                    <Form.Label>School State</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter School State"
+                                        value={school_state}
+                                        onChange={(e) => setSchoolState(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDegree">
-                            <Form.Label>Degree Earned</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Degree"
-                                value={degree_earned}
-                                onChange={(e) => setDegreeEarned(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicSchoolCountry">
+                                    <Form.Label>School Country</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter School Country"
+                                        value={school_country}
+                                        onChange={(e) => setSchoolCountry(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicProgram">
-                            <Form.Label>Program</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Program"
-                                value={program}
-                                onChange={(e) => setProgram(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicDegree">
+                                    <Form.Label>Degree Earned</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Degree"
+                                        value={degree_earned}
+                                        onChange={(e) => setDegreeEarned(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDateStarted">
-                            <Form.Label>Start Date</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="YYYY-MM-DD"
-                                value={date_started}
-                                onChange={(e) => setDateStarted(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicProgram">
+                                    <Form.Label>Program</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Program"
+                                        value={program}
+                                        onChange={(e) => setProgram(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDateCompleted">
-                            <Form.Label>End Date</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="YYYY-MM-DD"
-                                value={date_completed}
-                                onChange={(e) => setDateCompleted(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicDateStarted">
+                                    <Form.Label>Start Date</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="YYYY-MM-DD"
+                                        value={date_started}
+                                        onChange={(e) => setDateStarted(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicSAccolades">
-                            <Form.Label>Accolades</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Accolades/Achievements"
-                                value={accolades}
-                                onChange={(e) => setAccolades(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicDateCompleted">
+                                    <Form.Label>End Date</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="YYYY-MM-DD"
+                                        value={date_completed}
+                                        onChange={(e) => setDateCompleted(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <div className="float-right">
-                            <Button 
-                                variant="outline-success"
-                                type="submit"
-                                onClick={onSubmit}
-                                className="mx-2"
-                            >Save</Button>
-                            <Button 
-                                variant="outline-primary"
-                                type="button"
-                                onClick={() => onUpdate(educationId)}
-                                className="mx-2"
-                            >Update</Button>
-                        </div>
-                    </Form>
+                                <Form.Group className="mb-3" controlId="formBasicSAccolades">
+                                    <Form.Label>Accolades</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Accolades/Achievements"
+                                        value={accolades}
+                                        onChange={(e) => setAccolades(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <div className="float-right">
+                                    <Button 
+                                        variant="outline-success"
+                                        type="submit"
+                                        onClick={onSubmit}
+                                        className="mx-2"
+                                    >Save</Button>
+                                    <Button 
+                                        variant="outline-primary"
+                                        type="button"
+                                        onClick={() => onUpdate(educationId)}
+                                        className="mx-2"
+                                    >Update</Button>
+                                </div>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-danger" onClick={handleClose}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
                 <div className="col-md-8 m">
                     <table class="table">
