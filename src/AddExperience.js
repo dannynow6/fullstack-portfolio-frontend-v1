@@ -146,20 +146,22 @@ const AddExperience = ({ onAdd }) => {
                             <Form.Label>End Date</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="YYYY-MM-DD"
+                                placeholder="YYYY-MM-DD (leave blank if current)"
                                 value={end_date}
                                 onChange={(e) => setEndDate(e.target.value)}
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmpCurrent">
-                            <Form.Label>Current Employer</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter 'yes' or 'no'"
+                            <Form.Select 
+                                id="selectEmpCurrent"
                                 value={current_employer}
                                 onChange={(e) => setCurrentEmployer(e.target.value)}
-                            />
+                            >
+                                <option>Current Employer?</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                            </Form.Select>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicDescription">

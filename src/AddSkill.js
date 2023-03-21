@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"; 
-import { Button, Form } from 'react-bootstrap'; 
+import { Button, Form, Dropdown } from 'react-bootstrap'; 
 import API from "./API"; 
 
 // id, name, level (advanced, familiar), type (hard/soft)
@@ -60,53 +60,64 @@ const AddSkill = ({ onAdd }) => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4">
-                    <h6 className="float-left border-bottom border-muted text-secondary pb-2">Create/Update Skill</h6>
-                    <form id="formSkill" onSubmit={onSubmit} className="mt-4">
-                        <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>{skillId} Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Skill Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </Form.Group>
+                    <Dropdown className="float-left">
+                        <Dropdown.Toggle variant="outline-secondary" id="dropdownSkill">Create/Update Skill</Dropdown.Toggle>
 
-                        <Form.Group className="mb-3" controlId="formBasicLevel">
-                            <Form.Label>Level</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Skill Level"
-                                value={level}
-                                onChange={(e) => setLevel(e.target.value)}
-                            />
-                        </Form.Group>
+                        <Dropdown.Menu>
+                            <form id="formSkill" onSubmit={onSubmit} className="mt-4">
+                                <Form.Group className="mb-3" controlId="formBasicName">
+                                    <Form.Label>{skillId} Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Enter Skill Name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicType">
-                            <Form.Label>Type</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter Skill Type"
-                                value={type}
-                                onChange={(e) => setType(e.target.value)}
-                            />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicLevel">
+                                    <Form.Select 
+                                        id="selectLevel"
+                                        value={level}
+                                        onChange={(e) => setLevel(e.target.value)}
+                                    >
+                                        <option>Skill Level</option>
+                                        <option value="advanced">advanced</option>
+                                        <option value="familiar">familiar</option>
+                                    </Form.Select>
+                                </Form.Group>
 
-                        <div className="float-right">
-                            <Button 
-                                variant="outline-success"
-                                type="submit"
-                                onClick={onSubmit}
-                                className="mx-2"
-                            >Save</Button>
-                            <Button 
-                                variant="outline-primary"
-                                type="button"
-                                onClick={() => onUpdate(skillId)}
-                                className="mx-2"
-                            >Update</Button>
-                        </div>
-                    </form>
+                                <Form.Group className="mb-3" controlId="formBasicType">
+                                    <Form.Select 
+                                        id="selectType"
+                                        value={type}
+                                        onChange={(e) => setType(e.target.value)} 
+                                    >
+                                        <option>Skill Type</option>
+                                        <option value="hard">hard</option>
+                                        <option value="soft">soft</option>
+                                    </Form.Select>
+                                </Form.Group>
+
+                                <div className="float-right">
+                                    <Button 
+                                        variant="outline-success"
+                                        type="submit"
+                                        onClick={onSubmit}
+                                        className="mx-2"
+                                    >Save</Button>
+                                    <Button 
+                                        variant="outline-primary"
+                                        type="button"
+                                        onClick={() => onUpdate(skillId)}
+                                        className="mx-2"
+                                    >Update</Button>
+                                </div>
+                            </form>
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+                    
                 </div>
                 <div className="col-md-8 m">
                     <table class="table">
