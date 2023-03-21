@@ -162,7 +162,7 @@ const AddSkill = ({ onAdd }) => {
                                                 size="sm"
                                                 type="button"
                                                 onClick={() => selectSkill(skill.id)}
-                                                className="d-inline mb-2"
+                                                className="d-inline m-2"
                                             >
                                                 Select
                                             </Button>
@@ -171,7 +171,7 @@ const AddSkill = ({ onAdd }) => {
                                                 size="sm"
                                                 type="button"
                                                 onClick={() => onDelete(skill.id)}
-                                                className="d-inline mx-2"
+                                                className="d-inline m-2"
                                             >
                                                 Delete
                                             </Button>
