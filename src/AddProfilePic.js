@@ -35,10 +35,8 @@ const AddProfilePic = ({ onAdd }) => {
  
     const onSubmit = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("name", name);
-        formData.append("picture", picture); 
-        //let item = { name, picture };
+        const form = e.target; 
+        const formData = new FormData(form);
         API.post("profilepics/", formData).then(() => refreshProfilePics()); 
         setName("");
         setPicture(null);
@@ -75,10 +73,11 @@ const AddProfilePic = ({ onAdd }) => {
                             <Modal.Title>ProfilePic</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <form enctype="multipart/form-data" id="form" onSubmit={onSubmit} className="mt-4">
+                            <form enctype="multipart/form-data" id="form" method="POST" action="http://127.0.0.1:8000/backend_api/profilepics/" onSubmit={onSubmit} className="mt-4">
                                 <Form.Group className="mb-3" controlId="formBasicName">
-                                    <Form.Label>{profilePicId} Name</Form.Label>
-                                    <Form.Control
+                                    <label>{profilePicId} Name</label>
+                                    <input
+                                        name="name"
                                         type="text"
                                         placeholder="Enter Picture Name"
                                         value={name}
@@ -89,6 +88,8 @@ const AddProfilePic = ({ onAdd }) => {
                                 <Form.Group className="mb-3" controlId="formBasicPicture">
                                     <Form.Label>Choose a Picture</Form.Label>
                                     <input 
+                                        name="picture"
+                                        class="form-control"
                                         type="file" 
                                         onChange={handleFileChange}
                                     ></input>
