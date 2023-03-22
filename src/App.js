@@ -7,10 +7,12 @@ import AddProject from './AddProject';
 import AddWebsite from './AddWebsite';
 import AddHobby from './AddHobby'; 
 import AddProfilePic from './AddProfilePic';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <AddProfile />
       <AddSkill /> 
       <AddEducation />
