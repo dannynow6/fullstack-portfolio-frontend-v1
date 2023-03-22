@@ -16,7 +16,7 @@ const AddProfilePic = ({ onAdd }) => {
     };
 
     const handleShow = () => setShow(true); 
-
+    
     useEffect(() => {
         refreshProfilePics();
     }, []);
@@ -28,11 +28,14 @@ const AddProfilePic = ({ onAdd }) => {
             })
             .catch(console.error);
     };
-
+ 
     const onSubmit = (e) => {
         e.preventDefault();
-        let item = { name, picture };
-        API.post("profilepics/", item).then(() => refreshProfilePics()); 
+        // let item = { name, picture };
+        const formData = new FormData();
+        formData.append("name", e.name);
+        formData.append("picture", e.picture);
+        API.post("profilepics/", formData).then(() => refreshProfilePics()); 
         setName("");
         setPicture(null);
     };
@@ -68,7 +71,7 @@ const AddProfilePic = ({ onAdd }) => {
                             <Modal.Title>ProfilePic</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <form id="formProfilePic" onSubmit={onSubmit} className="mt-4">
+                            <form enctype="multipart/form-data" id="form" onSubmit={onSubmit} className="mt-4">
                                 <Form.Group className="mb-3" controlId="formBasicName">
                                     <Form.Label>{profilePicId} Name</Form.Label>
                                     <Form.Control
@@ -81,7 +84,11 @@ const AddProfilePic = ({ onAdd }) => {
 
                                 <Form.Group className="mb-3" controlId="formBasicPicture">
                                     <Form.Label>Choose a Picture</Form.Label>
-                                    <input type="file" id="picture" name="picture" accept="image/png, image/jpeg, image/jpg"></input>
+                                    <input 
+                                        type="file" 
+                                        // value={picture} 
+                                        onChange={(e) => setPicture(e.target.files[0])}
+                                    ></input>
                                 </Form.Group>
 
                                 <div className="float-right">

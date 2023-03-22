@@ -62,3 +62,10 @@ function BrandExample() {
 
 export default BrandExample;
  
+
+
+ const formData = new FormData();
+        formData.append(
+            item.name, 
+            item.picture
+        );
