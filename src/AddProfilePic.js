@@ -15,6 +15,10 @@ const AddProfilePic = ({ onAdd }) => {
         setPicture(null);
     };
 
+    const handleFileChange = (e) => {
+        setPicture(e.target.files[0]); 
+    };
+
     const handleShow = () => setShow(true); 
     
     useEffect(() => {
@@ -31,10 +35,10 @@ const AddProfilePic = ({ onAdd }) => {
  
     const onSubmit = (e) => {
         e.preventDefault();
-        // let item = { name, picture };
         const formData = new FormData();
-        formData.append("name", e.name);
-        formData.append("picture", e.picture);
+        formData.append("name", name);
+        formData.append("picture", picture); 
+        //let item = { name, picture };
         API.post("profilepics/", formData).then(() => refreshProfilePics()); 
         setName("");
         setPicture(null);
@@ -86,8 +90,7 @@ const AddProfilePic = ({ onAdd }) => {
                                     <Form.Label>Choose a Picture</Form.Label>
                                     <input 
                                         type="file" 
-                                        // value={picture} 
-                                        onChange={(e) => setPicture(e.target.files[0])}
+                                        onChange={handleFileChange}
                                     ></input>
                                 </Form.Group>
 
