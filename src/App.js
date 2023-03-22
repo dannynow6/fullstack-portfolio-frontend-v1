@@ -6,6 +6,7 @@ import AddExperience from './AddExperience';
 import AddProject from './AddProject';
 import AddWebsite from './AddWebsite';
 import AddHobby from './AddHobby'; 
+import AddProfilePic from './AddProfilePic';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <AddProject />
       <AddWebsite />
       <AddHobby />
+      <AddProfilePic />
     </div>
   );
 }

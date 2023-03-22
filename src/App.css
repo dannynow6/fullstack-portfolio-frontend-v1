@@ -49,3 +49,8 @@ tbody {
   text-decoration: none;
   color: lightseagreen; 
 }
+
+.profile-picture {
+  max-width: 220px;
+  max-height: 220px;
+}
