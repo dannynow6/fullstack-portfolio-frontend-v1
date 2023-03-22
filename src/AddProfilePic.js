@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"; 
 import { Button, Form, Modal } from 'react-bootstrap'; 
-import API from "./API"; 
+import axios from 'axios'; 
+import API from "./API";  
 
 const AddProfilePic = ({ onAdd }) => {
     const [name, setName] = useState("");
@@ -35,16 +36,19 @@ const AddProfilePic = ({ onAdd }) => {
  
     const onSubmit = (e) => {
         e.preventDefault();
-        const form = e.target; 
+        const form = document.querySelector("form"); 
         const formData = new FormData(form);
-        API.post("profilepics/", formData).then(() => refreshProfilePics()); 
+        axios.post('http://127.0.0.1:8000/backend_api/profilepics/', formData).then(() => refreshProfilePics()); 
         setName("");
         setPicture(null);
     };
 
     const onUpdate = (id) => {
         let item = { name, picture };
-        API.put(`profilepics/${id}/`, item).then((res) => refreshProfilePics());
+        const formData = new FormData();
+        formData.append("name", item.name);
+        formData.append("picture", item.picture); 
+        axios.put(`http://127.0.0.1:8000/backend_api/profilepics/${id}/`, formData).then((res) => refreshProfilePics());
         setName("");
         setPicture(null);
     };
