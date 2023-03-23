@@ -9,6 +9,7 @@ import AddHobby from './AddHobby';
 import AddProfilePic from './AddProfilePic';
 import AddMyInfo from './AddMyInfo';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <AddHobby />
       <AddProfilePic />
       <AddMyInfo />
+      <Footer />
     </div>
   );
 }
