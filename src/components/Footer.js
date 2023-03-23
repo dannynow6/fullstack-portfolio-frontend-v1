@@ -44,10 +44,10 @@ const Footer = () => {
 
 
     return (
-        <footer className="site-footer text-center text-secondary">
+        <footer className="site-footer text-secondary border-top border-muted pt-3">
             <Container>
                 <Row>
-                    <Col>
+                    <Col className="text-start">
                         <p>
                             <a href={git.url} class="footer-link" target="_blank" rel="noopener noreferrer"> 
                                 <FaGithub />
@@ -66,11 +66,11 @@ const Footer = () => {
                         />{' '}
                         <AiOutlineCopyright /> 2023 
                     </Col>
-                    <Col>
+                    <Col className="text-end">
                         <h6 className="text-secondary">
                             Contact
                         </h6>
-                        <address>
+                        <address> 
                             <a href="mailto:{currentInfo.email}">{currentInfo.email}</a>
                             <br />
                             <p>

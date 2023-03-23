@@ -19,7 +19,7 @@ const Header = () => {
     };
 
     return (
-        <Navbar bg="light">
+        <Navbar bg="light" className="shadow-lg rounded">
             <Container>
                 <Navbar.Brand >
                     <img 
