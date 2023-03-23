@@ -1,9 +1,10 @@
-import { Container, Row, Col, Nav } from 'react-bootstrap'; 
-// import DanLogo from "../logo.png"; 
+import { Container, Row, Col } from 'react-bootstrap'; 
+import DanLogo from "../logo.png"; 
 import API from '../API';
 import { useState, useEffect } from 'react'; 
 import { AiFillLinkedin } from 'react-icons/ai'; 
 import { FaGithub } from 'react-icons/fa'; 
+import { AiOutlineCopyright } from 'react-icons/ai'; 
 
 
 const Footer = () => {
@@ -44,18 +45,42 @@ const Footer = () => {
 
     return (
         <footer className="site-footer text-center text-secondary">
-            
-                <Nav.Item>
-                    <Nav.Link href={git.url}>
-                        <FaGithub />
-                    </Nav.Link>
-                    <Nav.Link href={linked.url}>
-                        <AiFillLinkedin />
-                    </Nav.Link>
-                </Nav.Item>
-                <Col>
-                    {currentInfo.first_name}
-                </Col>
+            <Container>
+                <Row>
+                    <Col>
+                        <p>
+                            <a href={git.url} class="footer-link" target="_blank" rel="noopener noreferrer"> 
+                                <FaGithub />
+                            </a>
+                            <a href={linked.url} class="footer-link" target="_blank" rel="noopener noreferrer">
+                                <AiFillLinkedin />
+                            </a>
+                        </p>
+                    </Col>
+                    <Col>
+                        <img 
+                            src={DanLogo}
+                            height="25"
+                            width="25"
+                            alt="DG Logo"
+                        />{' '}
+                        <AiOutlineCopyright /> 2023 
+                    </Col>
+                    <Col>
+                        <h6 className="text-secondary">
+                            Contact
+                        </h6>
+                        <address>
+                            <a href="mailto:{currentInfo.email}">{currentInfo.email}</a>
+                            <br />
+                            <p>
+                                {currentInfo.street}
+                                <div>{currentInfo.city}, {currentInfo.state}, {currentInfo.postal}</div>
+                            </p>
+                        </address>
+                    </Col>
+                </Row>
+            </Container>
         
         </footer>
     )

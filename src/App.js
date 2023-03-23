@@ -10,11 +10,13 @@ import AddProfilePic from './AddProfilePic';
 import AddMyInfo from './AddMyInfo';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Profile from './components/Profile';
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <Profile />
       <AddProfile />
       <AddSkill /> 
       <AddEducation />

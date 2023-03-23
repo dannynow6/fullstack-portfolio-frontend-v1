@@ -54,3 +54,9 @@ tbody {
   max-width: 220px;
   max-height: 220px;
 }
+
+.footer-link {
+  text-decoration: none;
+  color: rgb(148, 148, 148);
+  padding: 5px;
+}
