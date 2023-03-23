@@ -1,16 +1,21 @@
-import { Container, Row, Col } from 'react-bootstrap'; 
-
+import { Container, Navbar } from 'react-bootstrap'; 
+import DanLogo from "../logo.png"; 
 const Header = () => {
+
+    
+
     return (
-        <Container className="w-75 m-2">
-            <Row className="justify-content-md-center">
-                <Col md="auto">
-                    <h1 className="display-2">
-                        Danny's Portfolio 
-                    </h1>
-                </Col>
-            </Row>
-        </Container>
+        <Navbar bg="light">
+            <Container>
+                <img 
+                    src={DanLogo}
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                    alt="DG Logo"
+                />
+            </Container>
+        </Navbar>
     )
 };
 

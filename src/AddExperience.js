@@ -106,7 +106,7 @@ const AddExperience = ({ onAdd }) => {
                         </Modal.Header>
                         <Modal.Body>
                             <Form onSubmit={onSubmit} className="mt-4">
-                                <Form.Group className="mb-3" controlId="formBasicPosition">
+                                <Form.Group className="mb-3" controlId="formBasicPostion">
                                     <Form.Label>{experienceId} Position</Form.Label>
                                     <Form.Control
                                         type="text"

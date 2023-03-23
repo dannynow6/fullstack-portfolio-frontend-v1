@@ -7,6 +7,7 @@ import AddProject from './AddProject';
 import AddWebsite from './AddWebsite';
 import AddHobby from './AddHobby'; 
 import AddProfilePic from './AddProfilePic';
+import AddMyInfo from './AddMyInfo';
 import Header from './components/Header';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <AddWebsite />
       <AddHobby />
       <AddProfilePic />
+      <AddMyInfo />
     </div>
   );
 }
