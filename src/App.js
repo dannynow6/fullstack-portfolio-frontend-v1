@@ -14,6 +14,7 @@ import Profile from './components/Profile';
 import TopPage from './components/TopPage';
 import Skills from './components/Skills';
 import Education from './components/Education';
+import Experience from './components/Experience';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Profile />
       <Skills />
       <Education />
+      <Experience />
       <AddProfile />
       <AddSkill /> 
       <AddEducation />

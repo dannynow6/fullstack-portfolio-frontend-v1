@@ -3,49 +3,49 @@ import API from '../API';
 import { useState, useEffect } from 'react'; 
 import { HiArrowSmRight } from 'react-icons/hi'; 
 
-const Education = () => {
-    const [educations, setEducations] = useState([]);
+const Experience = () => {
+    const [experiences, setExperiences] = useState([]);
 
     useEffect(() => {
-        getEducation();
+        getExperiences();
     }, []);
 
-    const getEducation = () => {
-        API.get("education/")
+    const getExperiences = () => {
+        API.get("experiences/")
             .then((res) => {
-                setEducations(res.data);
+                setExperiences(res.data);
             })
             .catch(console.error);
     };
 
     return (
-        <Container className="w-75 mt-3" id="education-container">
+        <Container className="w-75 mt-3">
             <div className="row mb-3">
                 <div>
-                    <h6 className="display-6 text-center text-secondary">Education</h6>
+                    <h6 className="display-6 text-center text-secondary">Experience</h6>
                 </div>
             </div>
             <div className="row flex-nowrap overflow-auto">
-                {educations.map((education, index) => {
+                {experiences.map((experience, index) => {
                     return (
-                        <div className="col-sm-4">
+                        <div className="col-sm-5">
                             <Card>
                                 <Card.Body>
-                                    <Card.Title>
-                                        {education.school_name}
-                                    </Card.Title>
+                                    <Card.Title>{experience.position}</Card.Title>
                                     <Card.Text>
                                         <ListGroup>
                                             <ListGroup.Item>
-                                                Degree: {education.degree_earned}
+                                                {experience.employer_name}
                                             </ListGroup.Item>
                                             <ListGroup.Item>
-                                                {education.date_started}{' '}<HiArrowSmRight />{' '}{education.date_completed}
+                                                {experience.start_date}{' '}<HiArrowSmRight />{' '}{experience.end_date}
+                                            </ListGroup.Item>
+                                            <ListGroup.Item>
+                                                {experience.description} 
                                             </ListGroup.Item>
                                         </ListGroup>
                                     </Card.Text>
                                 </Card.Body>
-                                <Card.Footer>{education.accolades}</Card.Footer>
                             </Card>
                         </div>
                     )
@@ -55,4 +55,4 @@ const Education = () => {
     )
 };
 
-export default Education; 
+export default Experience; 

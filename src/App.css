@@ -93,13 +93,6 @@ tbody {
   color:rgb(37, 106, 125);
 }
 
-#skills-container {
-  overflow-inline: scroll;
-}
-
-#education-container {
-  overflow-inline: scroll; 
-}
 /*
 body {
   background-image: url("../public/images/abstract.png");
