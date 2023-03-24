@@ -92,9 +92,20 @@ tbody {
 .email-link:hover {
   color:rgb(37, 106, 125);
 }
-/*
-#top-page-container {
-  background-image: url("../public/images/abstract.png");
+
+#skills-container {
+  overflow-inline: scroll;
 }
 
+#education-container {
+  overflow-inline: scroll; 
+}
+/*
+body {
+  background-image: url("../public/images/abstract.png");
+  background-size: contain;
+  background-repeat: no-repeat; 
+  opacity: 0.4; 
+}
 */
+

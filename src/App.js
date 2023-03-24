@@ -12,6 +12,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
 import TopPage from './components/TopPage';
+import Skills from './components/Skills';
+import Education from './components/Education';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Header />
       <TopPage />
       <Profile />
+      <Skills />
+      <Education />
       <AddProfile />
       <AddSkill /> 
       <AddEducation />
