@@ -48,14 +48,12 @@ const Footer = () => {
             <Container>
                 <Row>
                     <Col className="text-start">
-                        <p>
-                            <a href={git.url} class="footer-link" target="_blank" rel="noopener noreferrer"> 
-                                <FaGithub />
-                            </a>
-                            <a href={linked.url} class="footer-link" target="_blank" rel="noopener noreferrer">
-                                <AiFillLinkedin />
-                            </a>
-                        </p>
+                        <a href={git.url} class="footer-link" target="_blank" rel="noopener noreferrer"> 
+                            <FaGithub />
+                        </a>
+                        <a href={linked.url} class="footer-link" target="_blank" rel="noopener noreferrer">
+                            <AiFillLinkedin />
+                        </a>
                     </Col>
                     <Col>
                         <img 
@@ -71,7 +69,7 @@ const Footer = () => {
                             Contact
                         </h6>
                         <address> 
-                            <a href="mailto:{currentInfo.email}">{currentInfo.email}</a>
+                            <a href="mailto:{currentInfo.email}" class="email-link">{currentInfo.email}</a>
                             <br />
                             <p>
                                 {currentInfo.street}

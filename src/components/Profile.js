@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 const Profile = () => {
     const [profile, setProfile] = useState(""); 
-    const [pic, setPic] = useState("");
+    
 
     useEffect(() => {
         getProfile();
@@ -20,31 +20,10 @@ const Profile = () => {
             })
             .catch(console.error);
     };
-
-    useEffect(() => {
-        getPicture();
-    }, []);
-
-    const getPicture = () => {
-        API.get("profilepics/1")
-            .then((res) => {
-                setPic(res.data);
-            })
-            .catch(console.error);
-    };
-
+    
     return (
 
         <Container className="w-75 mt-4">
-            <Row>
-                <Col>
-                    <img 
-                        src={pic.picture}
-                        alt="my pic"
-                        class="profile-picture"
-                    />
-                </Col>
-            </Row>
             <Row>
                 <Col>
                     <h3 className="display-3 text-secondary text-center">

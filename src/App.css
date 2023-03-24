@@ -60,3 +60,35 @@ tbody {
   color: rgb(148, 148, 148);
   padding: 5px;
 }
+
+#top-picture {
+  max-width: 350px;
+  max-height: 350px; 
+}
+
+#top-page {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#profile-picture {
+  max-width: 220px;
+  max-height: 220px; 
+}
+
+.footer-link {
+  font-size: 1.5rem; 
+}
+
+.footer-link:hover {
+  color:rgb(37, 106, 125); 
+}
+
+.email-link {
+  text-decoration: none;
+  color:rgb(99, 97, 97);
+}
+
+.email-link:hover {
+  color:rgb(37, 106, 125);
+}

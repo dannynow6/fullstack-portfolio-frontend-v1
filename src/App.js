@@ -11,11 +11,13 @@ import AddMyInfo from './AddMyInfo';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
+import TopPage from './components/TopPage';
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <TopPage />
       <Profile />
       <AddProfile />
       <AddSkill /> 
