@@ -77,7 +77,7 @@ const Profile = () => {
     
     return (
 
-        <Container className="w-75 mt-4">
+        <Container className="w-75 mt-4" id="scrollspyProfile">
             <Row>
                 <Col>
                     <h3 className="display-3 text-secondary text-center">

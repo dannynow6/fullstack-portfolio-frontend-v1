@@ -1,4 +1,4 @@
-import { Container, Row, Col } from 'react-bootstrap'; 
+import { Container, Row, Col, Nav } from 'react-bootstrap'; 
 import DanLogo from "../logo.png"; 
 import API from '../API';
 import { useState, useEffect } from 'react'; 
@@ -56,12 +56,13 @@ const Footer = () => {
                         </a>
                     </Col>
                     <Col>
+                        <Nav.Link href="#top-page-container">
                         <img 
                             src={DanLogo}
                             height="25"
                             width="25"
                             alt="DG Logo"
-                        />{' '}
+                        /></Nav.Link>{' '}
                         <AiOutlineCopyright /> 2023 
                     </Col>
                     <Col className="text-end">

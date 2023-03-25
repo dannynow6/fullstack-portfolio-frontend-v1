@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'; 
-import { Container, Navbar } from 'react-bootstrap'; 
+import { Container, Navbar, Nav } from 'react-bootstrap'; 
 import DanLogo from "../logo.png"; 
 import API from '../API';
 
@@ -31,6 +31,13 @@ const Header = () => {
                     />{' '}
                     {currentInfo.first_name} {currentInfo.last_name}
                 </Navbar.Brand>
+                <Nav className="me-auto">
+                    <Nav.Link href="#scrollspyProflie">Profile</Nav.Link>
+                    <Nav.Link href="#scrollspySkill">Skills</Nav.Link>
+                    <Nav.Link href="#scrollspyEducation">Education</Nav.Link>
+                    <Nav.Link href="#scrollspyExperience">Experience</Nav.Link>
+                    <Nav.Link href="#scrollspyProjects">Projects</Nav.Link>
+                </Nav>
             </Container>
         </Navbar>
     )

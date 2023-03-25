@@ -19,7 +19,7 @@ const Education = () => {
     };
 
     return (
-        <Container className="w-75 mt-3" id="education-container">
+        <Container className="w-75 mt-3" id="scrollspyEducation">
             <div className="row mb-3">
                 <div>
                     <h6 className="display-6 text-center text-secondary">Education</h6>

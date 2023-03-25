@@ -64,13 +64,13 @@ const Skills = () => {
     }
 
     return (
-        <Container className="w-75 mt-3" id="skills-container">
+        <Container className="w-75 mt-3" id="scrollspySkill">
             <div className="row mb-3">
                 <div>
                     <h6 className="display-6 text-center text-secondary">Skills</h6>
                 </div>
             </div>
-            <div className="row flex-nowrap overflow-auto">
+            <div className="row flex-nowrap overflow-auto" id="skills-container">
                 {skills.map((skill, index) => {
                     return (
                         <div className="col-md-3">

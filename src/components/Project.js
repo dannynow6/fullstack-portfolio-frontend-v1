@@ -18,7 +18,7 @@ const Project = () => {
     };
 
     return (
-        <Container className="w-75 mt-3">
+        <Container className="w-75 mt-3" id="scrollspyProjects">
             <div className="row mb-3">
                 <div>
                     <h6 className="display-6 text-center text-secondary">Projects</h6>
