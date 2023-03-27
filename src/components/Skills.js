@@ -33,7 +33,6 @@ const Skills = () => {
             .catch(console.error);
     };
 
-    
     const onSubmit = (e) => {
         e.preventDefault();
         let item = { name, level, type };
